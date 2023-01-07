@@ -9,6 +9,7 @@
         exit();
   } 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +77,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Muhammad Fauzi</a>
+          <a href="#" class="d-block">23pmcafe</a>
         </div>
       </div>
 
@@ -171,12 +172,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Menu</h1>
+            <h1 class="m-0">Data Transaksi</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">Data Menu</li>
-              <li class="breadcrumb-item active"> Edit Data Menu</li>
+              <li class="breadcrumb-item">Data Transaksi</li>
+              <li class="breadcrumb-item active">Input Detail Transaksi</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -201,40 +202,104 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-list mr-1"></i>
-                  Edit Data Menu
+                  Detail Transaksi
                 </h3>
                 <div class="card-tools">
-
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
-                <!--Memunculkan data yang mau diedit-->
                 <?php
-                    $id = $_GET['Id_Menu'];
-                    $query = $koneksi->query("SELECT * FROM menu WHERE Id_Menu=$id");
-                    $data = $query->fetch_assoc();
+                  $id = $_GET['id_transaksi'];
+                  $q = $koneksi->query("SELECT * FROM transaksi, pelanggan, admin 
+                    WHERE transaksi.Id_Pelanggan = pelanggan.Id_Pelanggan
+                    AND transaksi.Id_Admin = admin.Id_Admin
+                    AND Id_Transaksi = $id");
+                  $data = $q->fetch_assoc();
                 ?>
-                <form method="POST" action="edit_menu_action.php">
-                    <div class="form-group">
-                        <label>Nama Menu</label>
-                        <input type="hidden" name="Id_Menu" value="<?php echo $data['Id_Menu']?>">
-                        <input type="text" name="Nama_Menu" class="form-control" value="<?php echo $data['Nama_Menu']?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Harga_Menu</label>
-                        <input type="double" name="Harga_Menu" class="form-control" value="<?php echo $data['Harga_Menu']?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Deskripsi</label>
-                        <input type="text" name="Deskripsi" class="form-control" value="<?php echo $data['Deskripsi']?>">
-                    </div>
+                <table class="table">
+                  <tr>
+                    <th>Tanggal</th>
+                    <td><?php echo $data['Tanggal'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Pelanggan</th>
+                    <td><?php echo $data['Nama_Pelanggan'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Admin</th>
+                    <td><?php echo $data['Nama_Admin'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>No. Meja</th>
+                    <td><?php echo $data['No_Meja'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td><?php echo $data['Total'] ?></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="card-body">
+                <table class="table">
+                  <tr>
+                    <th>No.</th>
+                    <th>Menu</th>
+                    <th>Qty</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                  </tr>
+              <form method ="POST" action="add_detail_action.php">
+                <?php
+                  $no = 1;
+                  $id = $_GET['id_transaksi'];
+                  $q = $koneksi->query("SELECT * FROM transaksi, detail_transaksi, menu 
+                    WHERE transaksi.Id_Transaksi = detail_transaksi.Id_Transaksi
+                    AND menu.Id_Menu = detail_transaksi.Id_Menu 
+                    AND detail_transaksi.Id_Transaksi = $id");
+                  while($data = $q->fetch_assoc()){ ?>
+                    <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $data['Nama_Menu']; ?></td>
+                      <td><?php echo $data['Jumlah']; ?></td>
+                      <td><?php echo $data['Harga']; ?></td>
+                      <td>
+                        <a href="delete_detail_action.php?id_transaksi=<?= $data['Id_Transaksi'] ?>&id_menu=<?= $data['Id_Menu']?>"
+                        class="btn btn-sm btn-danger" onclick="return confirm('Anda Yakin?')">
+                        <i class="fas fa-trash mr-1"></i></a>
+                      </td>
+                    </tr>
+                <?php } ?>
+                  <tr>
+                      <td colspan="2">
+                        <input type="hidden" name="id_transaksi" value="<?php echo $id; ?>">
+                        <select name="id_menu" class="form-control">
+                        <?php
+                          $q = $koneksi->query("SELECT * FROM menu");
+                          while($m = $q->fetch_assoc()){ ?>
+                          <option value="<?php echo $m['Id_Menu'] ?>">
+                            <?php echo $m['Nama_Menu'] ?>
+                          </option>
+                        <?php } ?>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="number" name="jumlah" class="form-control">
+                      </td>
+                      <td>
+                        <input type="number" name="harga" class="form-control">
+                      </td>
+                      <td>
+                        <input type="submit" class="btn btn-sm btn-success" value="+">
+                      </td>
+                    </tr>
+                </table>
               <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Simpan">
-                <a href="Menu_list.php" class="btn btn-danger">
-                    Kembali 
-                </a>
+                    <a href="transaksi_list.php" class="btn btn-danger">
+                        Kembali
+                    </a>
                     </div>
-                </form>
+              </form>
               </div>
             </div>
             <!-- /.card -->
