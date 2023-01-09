@@ -232,7 +232,9 @@
                         <td><?php echo $data['Nama_Menu'] ?></td>
                         <td><?php echo $data['Deskripsi'] ?></td>
                         <td><?php echo $data['Harga_Menu'] ?></td>
-                        <td><?php echo $data['Foto_Menu'] ?></td>
+                        <td>
+                          <img src="img/<?php echo $data['Foto_Menu'] ?>" alt="">
+                        </td>
                         <td>
                         <a href="edit_menu_form.php?Id_Menu=<?php echo $data['Id_Menu']?>" class="btn btn-sm btn-warning">
                           <i class="fas fa-edit mr-1"></i>Ubah</a>

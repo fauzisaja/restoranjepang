@@ -208,7 +208,7 @@
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
-                <form method="POST" action="add_menu_action.php">
+                <form method="POST" action="add_menu_action.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Nama Menu</label>
                         <input type="text" name="Nama_Menu" class="form-control">
@@ -216,6 +216,10 @@
                     <div class="form-group">
                         <label>Harga_Menu</label>
                         <input type="text" name="Harga_Menu" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Foto Menu</label>
+                        <input type="file" name="Foto_Menu" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
