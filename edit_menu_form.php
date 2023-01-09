@@ -226,7 +226,7 @@
                     </div>
                     <div class="form-group">
                         <label>Foto_Menu</label>
-                        <input type="file" name="Foto_Menu" class="form-control" value="<?php echo $data['Harga_Menu']?>">
+                        <input type="file" name="Foto_Menu" class="form-control" value="<?php echo $data['Foto_Menu']?>">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
