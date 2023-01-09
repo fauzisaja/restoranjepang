@@ -14,6 +14,8 @@
 
     move_uploaded_file($tmpFile, $dir.$foto);
 
+    
+
     //proses menambah dalam database
     $data = $koneksi->query("INSERT INTO menu(Nama_Menu, Harga_Menu, Deskripsi, Foto_Menu) VALUES(
         '$nama', '$hrg', '$desk', '$foto')");
