@@ -214,7 +214,7 @@
                     $query = $koneksi->query("SELECT * FROM menu WHERE Id_Menu=$id");
                     $data = $query->fetch_assoc();
                 ?>
-                <form method="POST" action="edit_menu_action.php">
+                <form method="POST" action="edit_menu_action.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Nama Menu</label>
                         <input type="hidden" name="Id_Menu" value="<?php echo $data['Id_Menu']?>">
@@ -223,6 +223,10 @@
                     <div class="form-group">
                         <label>Harga_Menu</label>
                         <input type="double" name="Harga_Menu" class="form-control" value="<?php echo $data['Harga_Menu']?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Foto_Menu</label>
+                        <input type="file" name="Foto_Menu" class="form-control" value="<?php echo $data['Harga_Menu']?>">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
