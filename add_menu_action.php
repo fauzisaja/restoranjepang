@@ -12,7 +12,7 @@
     $dir = "img/";
     $tmpFile = $_FILES['Foto_Menu']['tmp_name'];
 
-    move_uploaded_file($tmpFile, $dir.$fb);
+    move_uploaded_file($tmpFile, $dir.$foto);
 
     //proses menambah dalam database
     $data = $koneksi->query("INSERT INTO menu(Nama_Menu, Harga_Menu, Deskripsi, Foto_Menu) VALUES(
