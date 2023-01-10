@@ -176,7 +176,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Data Admin</li>
-              <li class="breadcrumb-item active">Data Contoh 1</li>
+              <li class="breadcrumb-item active">Input Data Admin</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

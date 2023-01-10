@@ -176,7 +176,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Data Menu</li>
-              <li class="breadcrumb-item active">Data Contoh 1</li>
+              <li class="breadcrumb-item active"> Input Data Menu</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
