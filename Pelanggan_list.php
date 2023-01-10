@@ -14,7 +14,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Sushi Ichiban | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -65,7 +65,7 @@
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Sushi Ichiban</span>
     </a>
 
     <!-- Sidebar -->
@@ -176,7 +176,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Data Pelanggan</li>
-              <li class="breadcrumb-item active">Data Contoh 1</li>
+              <li class="breadcrumb-item active">Input Data Pelanggan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -201,7 +201,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-list mr-1"></i>
-                  Data Contoh 1
+                  Data Pelanggan
                 </h3>
                 <div class="card-tools">
                 <a href="add_pelanggan_form.php" class=" btn btn-primary">
